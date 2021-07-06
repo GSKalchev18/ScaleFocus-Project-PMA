@@ -1,6 +1,6 @@
 const config = {
     database: "ScaleFocus-PMA",
-    server: "(localdb)\\MSSQLLocalDB",
+    server: ".\\SQLExpress",
     pool: {
         max: 10,
         min: 0,

@@ -23,12 +23,17 @@ router.post('/register', async function(req, res, next) {
     try {
         // Put data into the Sql server
         const pool = await sql.connect   (config);
-        const passHash = sha256.update(req.body.password).digest('hex');
+        const passHash = sha256.update(req.body.Password).digest('hex');
         
         const result = await pool.request()
-            .query(`
-                SELECT * FROM Users
-            `)
+        .input("Username", sql.VarChar, req.body.Username)
+        .input("First_Name", sql.NVarChar, req.body.First_Name)
+        .input("Last_Name", sql.NVarChar, req.body.Last_Name)
+        .input("Password", sql.VarChar, passHash)
+        .query(`
+            INSERT INTO Users (Username, First_Name, Last_Name, Password)
+            VALUES (@Username, @First_Name, @Last_Name, @Password)
+        `)
         console.log(result)
 
     } catch (err) {
