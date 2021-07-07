@@ -23,6 +23,11 @@ app.use('/', users_list_router);
 app.use('/', user_registration_router);
 app.use('/', login_page_router);
 
+app.use('/', function(req,res)
+{
+    res.render('index');
+});
+
 // Catch 404 and forward to error handler
 app.use('*', function(req, res, next) {
     next(createError(404));
