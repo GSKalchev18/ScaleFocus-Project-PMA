@@ -1,8 +1,11 @@
 const express = require('express');
 const {config} = require('../config/database_config');
 const sql = require('mssql/msnodesqlv8');
+const {UserRepositories} = require('../repositories/users');
 
 let router = express.Router();
+
+let users = new UserRepositories();
 
 (async () => {
     try{
