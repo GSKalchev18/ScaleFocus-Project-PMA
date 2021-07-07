@@ -10,8 +10,12 @@ let router = express.Router();
         const users_result = await connection.request().query(`SELECT * FROM Users`);
 
         router.get('/', function(req, res) {
-            res.render('index', 
+            if (req.session.isAdmin == true) {
+                res.render('index', 
                 {userList: users_result.recordset});
+            } else {
+                res.render('error_page');
+            }
         });
     }
     catch(err)

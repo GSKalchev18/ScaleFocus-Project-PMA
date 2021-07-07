@@ -3,9 +3,17 @@ const sql = require('mssql/msnodesqlv8');
 const app = express();
 const PORT = process.env.PORT || 5500;
 
+let session = require('express-session')
+
 let users_list_router = require('./routers/users_list');
 let user_registration_router = require('./routers/user_register');
 let login_page_router = require('./routers/login');
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}))
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
