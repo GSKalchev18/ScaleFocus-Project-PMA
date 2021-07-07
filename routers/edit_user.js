@@ -42,9 +42,7 @@ router.post('/edit', async function(req, res, next) {
         .input("Last_Name", sql.NVarChar, req.body.Last_Name)
         //.input("Password", sql.VarChar, passHash)
         .input("Id", sql.Int, req.body.Id)
-        .query(`UPDATE Users 
-                SET Username = @Username, First_Name = @First_Name, Last_Name = @Last_Name
-                WHERE Id = @Id`);
+        .execute("UpdateUsers");
         console.log(result)
 
     } catch (err) {
