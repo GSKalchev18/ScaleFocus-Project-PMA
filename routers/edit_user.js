@@ -12,17 +12,28 @@ router.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/register', function (req, res)
-{
-    res.render('register_user');
-});
+(async () => {
+    try{
+        let connection = await sql.connect(config);
+        const users_result = await connection.request().query(`SELECT * FROM Users`);
+
+        router.get('/edit', function(req, res) {
+            res.render('edit_page', 
+            {userList: users_result.recordset});
+        });
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+})()
 
 const sha256 = crypto.createHash('sha256');
 
-router.post('/register', async function(req, res, next) {
+router.post('/edit', async function(req, res, next) {
     try {
         // Put data into the Sql server
-        const pool = await sql.connect   (config);
+        const pool = await sql.connect(config);
         const passHash = sha256.update(req.body.Password).digest('hex');
         
         const result = await pool.request()
@@ -30,14 +41,16 @@ router.post('/register', async function(req, res, next) {
         .input("First_Name", sql.NVarChar, req.body.First_Name)
         .input("Last_Name", sql.NVarChar, req.body.Last_Name)
         .input("Password", sql.VarChar, passHash)
-        .execute("RegisterUser");
+        .query(`UPDATE Users 
+                SET Username = @Username, First_Name = @First_Name, Last_Name = @Last_Name, Password = @Password
+                WHERE Id = 1`);
         console.log(result)
 
     } catch (err) {
         console.log(err);
     }
 
-    res.redirect("/register");
+    res.redirect("/users");
 });
 
 module.exports = router;

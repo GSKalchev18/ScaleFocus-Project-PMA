@@ -14,6 +14,7 @@
         <table class="fl-table">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Username</th>
                     <th>Full Name</th>
                 </tr>
@@ -21,6 +22,7 @@
             <tbody>
                 <%for(let i = 0; i < userList.length; i++) { %> 
                     <tr>
+                        <td><%=userList[i].Id%></td>
                         <td><%=userList[i].Username%></td>
                         <td><%=userList[i].First_Name%> <%=userList[i].Last_Name%></td>
                     </tr>
@@ -28,6 +30,13 @@
             </tbody>
 
         <table>
+    </div>
+    <div class="form-container">
+        <form name = "registration-form" class="contact-form" method="POST" action="/edit">
+            <h2 class = "FormLable">Edit</h2>
+            <input type="number" name="Id" id="Id" placeholder="Id">
+            <input class="submit" type="submit" value = "Edit">
+        </form>
     </div>
 </body>
 </html>

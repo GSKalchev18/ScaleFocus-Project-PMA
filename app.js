@@ -8,6 +8,7 @@ let session = require('express-session')
 let users_list_router = require('./routers/users_list');
 let user_registration_router = require('./routers/user_register');
 let login_page_router = require('./routers/login');
+let user_edit_router = require('./routers/edit_user');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use('/', users_list_router);
 app.use('/', user_registration_router);
 app.use('/', login_page_router);
+app.use('/', user_edit_router);
 
 app.use('/', function(req,res)
 {
