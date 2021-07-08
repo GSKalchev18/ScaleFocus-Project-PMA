@@ -9,6 +9,7 @@ let users_list_router = require('./routers/users_list');
 let user_registration_router = require('./routers/user_register');
 let login_page_router = require('./routers/login');
 let user_edit_router = require('./routers/edit_user');
+let user_delete_router = require('./routers/delete_user');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -24,6 +25,7 @@ app.use('/', users_list_router);
 app.use('/', user_registration_router);
 app.use('/', login_page_router);
 app.use('/', user_edit_router);
+app.use('/', user_delete_router);
 
 app.use('/', function(req,res)
 {
