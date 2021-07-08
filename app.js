@@ -10,6 +10,7 @@ let user_registration_router = require('./routers/user_register');
 let login_page_router = require('./routers/login');
 let user_edit_router = require('./routers/edit_user');
 let user_delete_router = require('./routers/delete_user');
+let team_registration_router = require('./routers/team_register');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -26,8 +27,9 @@ app.use('/', user_registration_router);
 app.use('/', login_page_router);
 app.use('/', user_edit_router);
 app.use('/', user_delete_router);
+app.use('/', team_registration_router);
 
-app.use('/', function(req,res)
+app.get('/', function(req,res)
 {
     res.render('index');
 });

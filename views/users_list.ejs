@@ -33,23 +33,25 @@
             </tbody>
 
         <table>
-        <div class="login">
-            <form name = "registration-form" class="contact-form" method="POST" action="/edit">
-                <h2 class = "UserListLable">Edit User</h2>
-                <input type="number" name="Id" id="Id" placeholder="Id" required>
-                <input type="text" name="Username" id="Username" placeholder="Username" required>
-                <input type="text" name="First_Name" id="First_Name" placeholder="First name" required>
-                <input type="text" name="Last_Name" id="Last_Name"  placeholder="Last name" required>
-                <input class="submit" type="submit" value = "Edit">
-            </form>
-        </div>
+            <div class="form-container">
+            <div class="login">
+                <form name = "registration-form" class="contact-form" method="POST" action="/edit">
+                    <h2 class = "UserListLable">Edit User</h2>
+                    <input type="number" name="Id" id="Id" placeholder="Id" required>
+                    <input type="text" name="Username" id="Username" placeholder="Username" required>
+                    <input type="text" name="First_Name" id="First_Name" placeholder="First name" required>
+                    <input type="text" name="Last_Name" id="Last_Name"  placeholder="Last name" required>
+                    <input class="submit" type="submit" value = "Edit">
+                </form>
+            </div>
 
-        <div class="login">
-            <form name = "registration-form" class="contact-form" method="POST" action="/delete">
-                <h2 class = "UserListLable">Delete User</h2>
-                <input type="number" name="Id" id="Id" placeholder="Id" required>
-                <input class="submit" type="submit" value = "Delete">
-            </form>
+            <div class="login">
+                <form name = "registration-form" class="contact-form" method="POST" action="/delete">
+                    <h2 class = "UserListLable">Delete User</h2>
+                    <input type="number" name="Id" id="Id" placeholder="Id" required>
+                    <input class="submit" type="submit" value = "Delete">
+                </form>
+            </div>
         </div>
     </div>
 </body>
