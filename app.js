@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5500;
 let session = require('express-session')
 
 let users_list_router = require('./routers/users_list');
+let teams_list_router = require('./routers/teams_list');
 let user_registration_router = require('./routers/user_register');
 let login_page_router = require('./routers/login');
 let user_edit_router = require('./routers/edit_user');
@@ -27,6 +28,7 @@ app.get('/register', function(req,res){
 });
 
 app.use('/', users_list_router);
+app.use('/', teams_list_router);
 app.use('/', user_registration_router);
 app.use('/', login_page_router);
 app.use('/', user_edit_router);
