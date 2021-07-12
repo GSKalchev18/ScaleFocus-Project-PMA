@@ -22,6 +22,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 
+app.get('/register', function(req,res){
+    res.render('register_page');
+});
+
 app.use('/', users_list_router);
 app.use('/', user_registration_router);
 app.use('/', login_page_router);
