@@ -10,10 +10,13 @@ let router = express.Router();
         const teams_result = await connection.request()
         .query(`SELECT Teams.Id, Teams.Title, Teams.DateOfCreation FROM Teams`);
 
+        const user_result = await connection.request()
+        .query(`SELECT Users.First_Name, Users.Last_Name FROM Users`);
+
         router.get('/teams', function(req, res) {
             if (req.session.isAdmin == true) {
                 res.render('teams_list', 
-                {TeamsList: teams_result.recordset});
+                {TeamsList: teams_result.recordset, UserList: user_result.recordset});
             } else {
                 res.render('error_page');
             }

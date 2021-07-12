@@ -19,6 +19,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
+                    <th>Members</th>
                     <th>Date of creation</th>
                 </tr>
             </thead>
@@ -27,6 +28,14 @@
                     <tr>
                         <td><%=TeamsList[i].Id%></td>
                         <td><%=TeamsList[i].Title%></td>
+                        <td><div class="dropdown">
+                            <button class="dropbtn">Members</button>
+                            <div class="dropdown-content">
+                                <%for(let i = 0; i < UserList.length; i++) { %> 
+                                        <a href="#"><%=UserList[i].First_Name%> <%=UserList[i].Last_Name%></a>
+                                <%}%>
+                            </div>
+                          </div></td>
                         <td><%=TeamsList[i].DateOfCreation?.toISOString().split('T')[0]%></td>
                     </tr>
                 <%}%>
