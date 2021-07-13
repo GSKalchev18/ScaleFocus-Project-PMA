@@ -8,12 +8,14 @@ let router = express.Router();
     try{
         let connection = await sql.connect(config);
         const teams_result = await connection.request()
+        .query(`SELECT * FROM Teams`);
+        const usersteams_result = await connection.request()
         .query(`SELECT * FROM vUsersTeams`);
 
         router.get('/teams', function(req, res) {
             if (req.session.isAdmin == true) {
                 res.render('teams_list', 
-                {TeamsList: teams_result.recordset});
+                {TeamsList: teams_result.recordset, UsersTeams: usersteams_result.recordset});
             } else {
                 res.render('error_page');
             }
