@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/users_table.css">
+    <link rel="stylesheet" href="css/form_style.css">
+    <title>Users list</title>
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <h1 class = "UserListLable">Teams list</h1>
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i = 0; i < TeamsList.length; i++) { %>
+                    <tr>
+                        <td><%=TeamsList[i].Id%></td>
+                        <td><%=TeamsList[i].Title%></td>
+                    </tr>
+                <%}%>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i = 0; i < userList.length; i++) { %>
+                    <tr>
+                        <td><%=userList[i].Id%></td>
+                        <td><%=userList[i].First_Name%> <%=userList[i].Last_Name%></td>
+                    </tr>
+                <%}%>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="form-container">
+        <div class="login">
+            <form name = "registration-form" class="contact-form" method="POST" action="/usersToTeams">
+                <h2 class = "UserListLable">Assign User</h2>
+                <input type="number" name="TeamId" id="TeamId" placeholder="Team Id" required>
+                <input type="number" name="UserId" id="UserId" placeholder="User Id" required>
+                <input class="submit" type="submit" value = "Assign">
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
