@@ -24,15 +24,15 @@
                 </tr>
             </thead>
             <tbody>
-                <%for(let i = 0; i < TeamsList.length; i++) { %> 
+                <%for(let i = 0; i < TeamsList.length; i++) { %>
                     <tr>
                         <td><%=TeamsList[i].Id%></td>
                         <td><%=TeamsList[i].Title%></td>
                         <td><div class="dropdown">
                             <button class="dropbtn">Members</button>
                             <div class="dropdown-content">
-                                <%for(let i = 0; i < UserList.length; i++) { %> 
-                                        <a href="#"><%=UserList[i].First_Name%> <%=UserList[i].Last_Name%></a>
+                                <%for(let i = 0; i < TeamsList.length; i++) { %> 
+                                        <a href="#"><%=TeamsList[i].First_Name%> <%=TeamsList[i].Last_Name%></a>
                                 <%}%>
                             </div>
                           </div></td>
