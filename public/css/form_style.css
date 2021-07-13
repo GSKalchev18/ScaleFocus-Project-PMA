@@ -203,9 +203,10 @@ header
 .dropbtn {
 	background-color: #04AA6D;
 	color: white;
-	padding: 16px;
-	font-size: 16px;
+	padding: 10px;
+	font-size: 10px;
 	border: none;
+	border-radius: 10px;
   }
   
   .dropdown {

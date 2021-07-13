@@ -29,14 +29,16 @@
                     <tr>
                         <td><%=TeamsList[i].Id%></td>
                         <td><%=TeamsList[i].Title%></td>
-                        <td><div class="dropdown">
-                            <button class="dropbtn">Members</button>
-                            <div class="dropdown-content">
-                                <%for(let i = 0; i < UsersTeams.length; i++) { %>
-                                    <a><%=UsersTeams[i].First_Name%> <%=UsersTeams[i].Last_Name%></a>
-                                <%}%>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn">Members</button>
+                                <div class="dropdown-content">
+                                    <%for(let i = 0; i < UsersTeams.length; i++) { %>
+                                        <a><%=UsersTeams[i].First_Name%> <%=UsersTeams[i].Last_Name%></a>
+                                    <%}%>
+                                </div>
                             </div>
-                          </div></td>
+                        </td>
                         <td><%=TeamsList[i].DateOfCreation?.toISOString().split('T')[0]%></td>
                     </tr>
                     <%}%>
