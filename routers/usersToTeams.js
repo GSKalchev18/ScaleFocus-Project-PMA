@@ -15,7 +15,7 @@ let users = new UserRepositories();
 
         router.get('/usersToTeams', function(req, res) {
             if (req.session.isAdmin == true) {
-                res.render('assignUsersToTeams', 
+                res.render('assigneUsersToTeams', 
                 {userList: users_result.recordset, TeamsList:teams_result.recordset});
             } else {
                 res.render('error_page');
