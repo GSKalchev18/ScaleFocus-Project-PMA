@@ -14,6 +14,7 @@ let user_delete_router = require('./routers/delete_user');
 let team_registration_router = require('./routers/team_register');
 let userToTeam_router = require('./routers/usersToTeams');
 let create_project_router = require('./routers/create_projects');
+let assign_team_to_project_router = require('./routers/teamsToProjects');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -38,6 +39,7 @@ app.use('/', user_delete_router);
 app.use('/', team_registration_router);
 app.use('/', userToTeam_router);
 app.use('/', create_project_router);
+app.use('/', assign_team_to_project_router);
 
 app.get('/', function(req,res)
 {
