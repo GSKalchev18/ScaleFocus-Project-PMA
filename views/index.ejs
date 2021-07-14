@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index_page.css">
+    <link rel="stylesheet" href="css/form_style.css">
     <title>Main Page</title>
 </head>
 <body>
-    <%- include('partials/header') %>
+
+    <div class="login center-form">
+        <form name = "registration-form" class="contact-form" method="POST" action="/login">
+            <input type="text" name="Username" id="Username" placeholder="Username" required>
+            <input type="password" name="Password" id="Password" placeholder="Password" required>
+            <input class="submit" type="submit" value = "Login">
+        </form>
+    </div>
 
 </body>
 </html>

@@ -235,3 +235,19 @@ header
   .dropdown:hover .dropdown-content {display: block;}
   
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+  .logout-button
+{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgb(192, 33, 4);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.logout-button:hover
+{
+    background-color: rgb(207, 39, 6);
+}

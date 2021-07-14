@@ -42,7 +42,7 @@ router.post('/login', async function(req, res, next) {
         console.log(err);
     }
 
-    res.redirect("/login");
+    res.redirect("/homepage");
 });
 
 module.exports = router;

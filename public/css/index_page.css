@@ -2,6 +2,8 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body
@@ -9,8 +11,6 @@ body
     background-repeat: no-repeat, repeat;
     background-color: #bcd5db;
     background-size: cover;
-    margin: 0;
-    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -67,4 +67,28 @@ header
 .contact-button:hover
 {
     background-color: rgba(0,126,169,0.8);
+}
+
+.logout-button
+{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgb(192, 33, 4);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.logout-button:hover
+{
+    background-color: rgb(207, 39, 6);
+}
+
+.center-form
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: max-content;
+    
 }
