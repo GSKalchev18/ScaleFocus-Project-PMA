@@ -11,10 +11,27 @@ router.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/tasks', function (req, res)
-{
-    res.render('create_and_assign_task');
-});
+(async () => {
+    try{
+        let connection = await sql.connect(config);
+        const projects_result = await connection.request().query(`SELECT * FROM Projects`);
+        const users_result = await connection.request().query(`SELECT * FROM Users WHERE Id != 1008`);
+
+        router.get('/tasks', function(req, res) {
+            if (req.session.isAdmin == true) {
+                res.render('create_and_assign_task', 
+                {ProjectsList: projects_result.recordset, UsersList:users_result.recordset});
+            } else {
+                res.render('error_page');
+            }
+        });
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+})()
+
 
 router.post('/tasks', async function(req, res, next) {
     try {

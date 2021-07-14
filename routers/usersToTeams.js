@@ -10,7 +10,7 @@ let users = new UserRepositories();
 (async () => {
     try{
         let connection = await sql.connect(config);
-        const users_result = await connection.request().query(`SELECT * FROM Users`);
+        const users_result = await connection.request().query(`SELECT * FROM Users WHERE Id != 1008`);
         const teams_result = await connection.request().query(`SELECT * FROM Teams`);
 
         router.get('/usersToTeams', function(req, res) {

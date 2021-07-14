@@ -18,6 +18,7 @@ let assign_team_to_project_router = require('./routers/teamsToProjects');
 let edit_team_router = require('./routers/edit_team');
 let projects_list_router = require('./routers/projects_list');
 let tasks_cras_router = require('./routers/create_and_assign_task');
+let tasks_list_router = require('./routers/tasks_list');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -46,6 +47,7 @@ app.use('/', create_project_router);
 app.use('/', assign_team_to_project_router);
 app.use('/',projects_list_router);
 app.use('/',tasks_cras_router);
+app.use('/', tasks_list_router);
 
 app.get('/', function(req,res)
 {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/users_table.css">
+    <link rel="stylesheet" href="css/form_style.css">
+    <title>Users list</title>
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <h1 class = "UserListLable">Tasks list</h1>
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Task Title</th>
+                    <th>Project Title</th>
+                    <th>User</th>
+                    <th>Date Of Creation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i = 0; i < ProjectsTasksUsers.length; i++) { %>
+                    <%if (ProjectsTasksUsers[i].Id == ProjectsTasksUsers[i].Id) {%>
+                    <tr>
+                        <td><%=ProjectsTasksUsers[i].Id%></td>
+                        <td><%=ProjectsTasksUsers[i].TaskTitle%></td>
+                        <td><%=ProjectsTasksUsers[i].ProjectTitle%></td>
+                        <td><%=ProjectsTasksUsers[i].Username%></td>
+                        <td><%=ProjectsTasksUsers[i].DateOfCreation?.toISOString().split('T')[0]%></td>
+                    </tr>
+                    <%}%>
+                <%}%>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
