@@ -14,11 +14,11 @@ router.use(bodyParser.urlencoded({ extended: true }));
 (async () => {
     try{
         let connection = await sql.connect(config);
-        const users_result = await connection.request().query(`SELECT * FROM Users`);
+        const teams_result = await connection.request().query(`SELECT * FROM Teams`);
 
-        router.get('/edit', function(req, res) {
-            res.render('edit_page', 
-            {userList: users_result.recordset});
+        router.get('/edit_teams', function(req, res) {
+            res.render('teams_list', 
+            {TeamsList: teams_result.recordset});
         });
     }
     catch(err)
@@ -27,23 +27,24 @@ router.use(bodyParser.urlencoded({ extended: true }));
     }
 })()
 
-router.post('/edit', async function(req, res, next) {
+router.post('/edit_teams', async function(req, res, next) {
     try {
         const pool = await sql.connect(config);
         
         const result = await pool.request()
-        .input("Username", sql.VarChar, req.body.Username)
-        .input("First_Name", sql.NVarChar, req.body.First_Name)
-        .input("Last_Name", sql.NVarChar, req.body.Last_Name)
+        .input("Title", sql.NVarChar, req.body.Title)
+        .input("Description", sql.NVarChar, req.body.Description)
         .input("Id", sql.Int, req.body.Id)
-        .execute("UpdateUsers");
+        .query(`UPDATE Teams 
+                SET Title = @Title, Description = @Description 
+                WHERE Id = @Id`);
         console.log(result)
 
     } catch (err) {
         console.log(err);
     }
 
-    res.redirect("/users");
+    res.redirect("/teams");
 });
 
 module.exports = router;

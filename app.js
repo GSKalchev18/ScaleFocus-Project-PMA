@@ -15,6 +15,7 @@ let team_registration_router = require('./routers/team_register');
 let userToTeam_router = require('./routers/usersToTeams');
 let create_project_router = require('./routers/create_projects');
 let assign_team_to_project_router = require('./routers/teamsToProjects');
+let edit_team_router = require('./routers/edit_team');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -35,6 +36,7 @@ app.use('/', teams_list_router);
 app.use('/', user_registration_router);
 app.use('/', login_page_router);
 app.use('/', user_edit_router);
+app.use('/', edit_team_router);
 app.use('/', user_delete_router);
 app.use('/', team_registration_router);
 app.use('/', userToTeam_router);
@@ -48,7 +50,11 @@ app.get('/', function(req,res)
 
 app.get('/homepage', function(req,res)
 {
-    res.render('homepage');
+    if (req.session.isAdmin == true) {
+        res.render('homepage');
+    } else {
+        res.render('error_page');
+    }
 });
 
 // Catch 404 and forward to error handler
