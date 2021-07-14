@@ -10,8 +10,9 @@ Create Project Management Application
 
 ## Used Technologies
 
-- Node.js
-- JavaScript
-- EJS
-- CSS
-- SQL
+- [HTML](https://html.com/)
+- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+- [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
+- [JavaScript](https://javascript.info/)
+- [Node.js](https://nodejs.org/en/)
+- [EJS](https://ejs.co/)
