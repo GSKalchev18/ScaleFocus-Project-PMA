@@ -10,7 +10,7 @@ let users = new UserRepositories();
 (async () => {
     try{
         let connection = await sql.connect(config);
-        const users_result = await connection.request().query(`SELECT * FROM Users`);
+        const users_result = await connection.request().query(`SELECT * FROM Users WHERE Id != 1008`);
 
         router.get('/users', function(req, res) {
             if (req.session.isAdmin == true) {

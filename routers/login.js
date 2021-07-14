@@ -25,7 +25,7 @@ router.post('/login', async function(req, res, next) {
         const result = await pool.request()
         .input("Username", sql.NVarChar, AdminUsername)
         .query(`
-            SELECT Password FROM Admin WHERE Username = @Username
+            SELECT Password FROM Users WHERE Username = @Username AND IsAdmin = 1
         `)
         
         //Checks if the admin password matches the admin password in the database
