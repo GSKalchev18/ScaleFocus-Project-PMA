@@ -16,6 +16,7 @@ let userToTeam_router = require('./routers/usersToTeams');
 let create_project_router = require('./routers/create_projects');
 let assign_team_to_project_router = require('./routers/teamsToProjects');
 let edit_team_router = require('./routers/edit_team');
+let projects_list_router = require('./routers/projects_list');
 
 app.use(session({
     secret: 'keyboard cat',
@@ -42,6 +43,7 @@ app.use('/', team_registration_router);
 app.use('/', userToTeam_router);
 app.use('/', create_project_router);
 app.use('/', assign_team_to_project_router);
+app.use('/',projects_list_router);
 
 app.get('/', function(req,res)
 {

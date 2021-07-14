@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/users_table.css">
+    <link rel="stylesheet" href="css/form_style.css">
+    <title>Users list</title>
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <h1 class = "UserListLable">Teams list</h1>
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Project</th>
+                    <th>Team</th>
+                    <th>Date of creation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i = 0; i < ProjectsTeams.length; i++) { %>
+                    <tr>
+                        <td><%=ProjectsTeams[i].Id%></td>
+                        <td><%=ProjectsTeams[i].Project%></td>
+                        <td><%=ProjectsTeams[i].TeamTitle%></td>
+                        <td><%=ProjectsTeams[i].DateOfCreation?.toISOString().split('T')[0]%></td>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
