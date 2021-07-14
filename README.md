@@ -16,3 +16,8 @@ Create Project Management Application
 - [JavaScript](https://javascript.info/)
 - [Node.js](https://nodejs.org/en/)
 - [EJS](https://ejs.co/)
+
+## Presentation and Documentation: <a name="documentation"></a>
+
+- [Documentation]()
+- [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/gskalchev18_codingburgas_bg1/EVf_fFH2kVlAsMQGiDudQFgBX6KqIuV2WOoqrK9HOYWVKw?e=pcsEpy)
