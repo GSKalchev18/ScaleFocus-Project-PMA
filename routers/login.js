@@ -23,14 +23,14 @@ router.post('/login', async function(req, res, next) {
         const AdminPass = req.body.Password
         
         const result = await pool.request()
-        .input("Username", sql.NVarChar, req.body.Username)
+        .input("Username", sql.NVarChar, AdminUsername)
         .query(`
             SELECT Password FROM Admin WHERE Username = @Username
         `)
         
         //Checks if the admin password matches the admin password in the database
 
-        if(result.recordset[0].Password == req.body.Password)
+        if(result.recordset[0].Password == AdminPass)
         {
             req.session.isAdmin = true;
         } else {
