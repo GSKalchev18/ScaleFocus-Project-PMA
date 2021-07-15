@@ -11,21 +11,18 @@ router.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: true }));
 
-(async () => {
+router.get('/edit_teams', async (req,res) => {
     try{
         let connection = await sql.connect(config);
         const teams_result = await connection.request().query(`SELECT * FROM Teams`);
-
-        router.get('/edit_teams', function(req, res) {
             res.render('teams_list', 
             {TeamsList: teams_result.recordset});
-        });
     }
     catch(err)
     {
         console.log(err);
     }
-})()
+});
 
 router.post('/edit_teams', async function(req, res, next) {
     try {

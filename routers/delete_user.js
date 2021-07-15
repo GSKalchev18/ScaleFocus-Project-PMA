@@ -11,21 +11,19 @@ router.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: true }));
 
-(async () => {
+router.get('/delete', async (req,res) => {
     try{
         let connection = await sql.connect(config);
         const users_result = await connection.request().query(`SELECT * FROM Users`);
-
-        router.get('/delete', function(req, res) {
-            res.render('users_list', 
-            {userList: users_result.recordset});
-        });
+        
+        res.render('users_list', 
+        {userList: users_result.recordset});
     }
     catch(err)
     {
         console.log(err);
     }
-})()
+});
 
 router.post('/delete', async function(req, res, next) {
     try {

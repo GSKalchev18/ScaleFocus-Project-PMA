@@ -4,26 +4,24 @@ const sql = require('mssql/msnodesqlv8');
 
 let router = express.Router();
 
-(async () => {
+router.get('/teamsprojects', async (req,res) => {
     try{
         let connection = await sql.connect(config);
         const projects_result = await connection.request().query(`SELECT * FROM Projects`);
         const teams_result = await connection.request().query(`SELECT * FROM Teams`);
 
-        router.get('/teamsprojects', function(req, res) {
-            if (req.session.isAdmin == true) {
-                res.render('assigneTeamsToProjects', 
-                {ProjectsList: projects_result.recordset, TeamsList:teams_result.recordset});
-            } else {
-                res.render('error_page');
-            }
-        });
+        if (req.session.isAdmin == true) {
+            res.render('assigneTeamsToProjects', 
+            {ProjectsList: projects_result.recordset, TeamsList:teams_result.recordset});
+        } else {
+            res.render('error_page');
+        }
     }
     catch(err)
     {
         console.log(err);
     }
-})()
+});
 
 router.post('/teamsprojects', async function(req, res, next) {
     try {

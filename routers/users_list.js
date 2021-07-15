@@ -7,24 +7,22 @@ let router = express.Router();
 
 let users = new UserRepositories();
 
-(async () => {
+router.get('/users', async (req, res) => {
     try{
         let connection = await sql.connect(config);
         const users_result = await connection.request().query(`SELECT * FROM Users WHERE Id != 1008`);
 
-        router.get('/users', function(req, res) {
-            if (req.session.isAdmin == true) {
-                res.render('users_list', 
-                {userList: users_result.recordset});
-            } else {
-                res.render('error_page');
-            }
-        });
+        if (req.session.isAdmin == true) {
+            res.render('users_list', 
+            {userList: users_result.recordset});
+        } else {
+            res.render('error_page');
+        }
     }
     catch(err)
     {
         console.log(err);
     }
-})()
+})
 
 module.exports = router;

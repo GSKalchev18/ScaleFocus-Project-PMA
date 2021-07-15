@@ -7,26 +7,24 @@ let router = express.Router();
 
 let users = new UserRepositories();
 
-(async () => {
+router.get('/usersToTeams', async (req,res) => {
     try{
         let connection = await sql.connect(config);
         const users_result = await connection.request().query(`SELECT * FROM Users WHERE Id != 1008`);
         const teams_result = await connection.request().query(`SELECT * FROM Teams`);
 
-        router.get('/usersToTeams', function(req, res) {
-            if (req.session.isAdmin == true) {
-                res.render('assigneUsersToTeams', 
-                {userList: users_result.recordset, TeamsList:teams_result.recordset});
-            } else {
-                res.render('error_page');
-            }
-        });
+        if (req.session.isAdmin == true) {
+            res.render('assigneUsersToTeams', 
+            {userList: users_result.recordset, TeamsList:teams_result.recordset});
+        } else {
+            res.render('error_page');
+        }
     }
     catch(err)
     {
         console.log(err);
     }
-})()
+});
 
 router.post('/usersToTeams', async function(req, res, next) {
     try {

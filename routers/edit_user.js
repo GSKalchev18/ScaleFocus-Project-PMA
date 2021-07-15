@@ -11,21 +11,18 @@ router.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: true }));
 
-(async () => {
+router.get('/edit',  async (req,res) => {
     try{
         let connection = await sql.connect(config);
         const users_result = await connection.request().query(`SELECT * FROM Users`);
-
-        router.get('/edit', function(req, res) {
             res.render('edit_page', 
             {userList: users_result.recordset});
-        });
     }
     catch(err)
     {
         console.log(err);
     }
-})()
+});
 
 router.post('/edit', async function(req, res, next) {
     try {
