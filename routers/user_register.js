@@ -17,12 +17,11 @@ router.get('/register_user', function (req, res)
     res.render('register_user');
 });
 
-const sha256 = crypto.createHash('sha256');
-
 router.post('/register_user', async function(req, res, next) {
     try {
         // Put data into the Sql server
-        const pool = await sql.connect   (config);
+        const sha256 = crypto.createHash('sha256');
+        const pool = await sql.connect(config);
         const passHash = sha256.update(req.body.Password).digest('hex');
         
         const result = await pool.request()

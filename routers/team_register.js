@@ -19,7 +19,7 @@ router.get('/register_team', function (req, res)
 router.post('/register_team', async function(req, res, next) {
     try {
         // Put team into the Sql server
-        const pool = await sql.connect   (config);
+        const pool = await sql.connect(config);
 
         const result = await pool.request()
         .input("Title", sql.NVarChar, req.body.Title)
